@@ -8,12 +8,15 @@ export default function App() {
   function handleSubmit(e){
     e.preventDefault()
 
-    setTodos([...todos,{}])
+    setTodos([...todos,{id: crypto.randomUUID(), title: newItem, completed: false},])
+    
   }
-  newItem
+  
+console.log(todos)
+
   return (
     <>
-      <form className="new-item-form">
+      <form onSubmit={handleSubmit} className="new-item-form">
         <div className="form-row">
           <label htmlFor="item">New Item</label>
           <input 
@@ -26,7 +29,7 @@ export default function App() {
         <button className="btn">Add</button>
       </form>
       <h1 className="header">Todo List</h1>
-      <ui className="list">
+      <ul className="list">
         <li>
           <label>
             <input type="checkbox"/>
@@ -34,7 +37,14 @@ export default function App() {
           </label>
           <button className="btn btn-danger">Delete</button>
         </li>
-      </ui>
+        <li>
+          <label>
+            <input type="checkbox"/>
+            Item 2
+          </label>
+          <button className="btn btn-danger">Delete</button>
+        </li>
+      </ul>
     </>
   )
 }
